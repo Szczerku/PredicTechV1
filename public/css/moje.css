@@ -1,0 +1,349 @@
+* {
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+    text-decoration: none;
+    font-family: 'Optima', sans-serif;
+  }
+
+header a{
+  text-decoration: none;
+}
+
+header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0f1f5a;
+  height: 80px;
+  padding: 0 20px;
+  font-size: 1.2rem;
+}
+
+
+.logo {
+  width: 200px; /* Stała szerokość obrazka */
+  margin-right: auto; /* Logo na lewo */
+  flex-shrink: 0; /* Zapobiega zmniejszaniu się logo */
+}
+
+.nav-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-links li {
+  display: inline-block; /*space between menu options*/
+  padding: 0 20px;
+  white-space: nowrap; /* Zapobieganie zawijaniu tekstu */
+}
+
+.nav-links li a{
+  display: flex;/*zbedne?*/
+  color: white;
+  border-radius: 50px;
+  transition: 0.2s;
+  padding: 10px 25px;
+}
+
+.text-with-icon {
+  margin-left: 8px;
+}
+
+.nav-links li button{
+  background-color: darkblue;
+  display: flex;
+  color: white;
+  border-radius: 50px;
+  transition: 0.2s;
+  padding: 10px 25px;
+}
+
+.nav-links li a:hover{
+  color: #1f35eb;
+  background-color: white;
+}
+
+.nav-links li button:hover{
+  color: #1f35eb;
+  background-color: white;
+}
+
+#hamburger-icon {
+  margin: auto 0;
+  display: none;
+  cursor: pointer;
+}
+
+#hamburger-icon div {
+  width: 35px;
+  height: 3px;
+  background-color: white;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+.open .bar1 {
+  -webkit-transform: rotate(-45deg) translate(-6px, 6px);
+  transform: rotate(-45deg) translate(-6px, 6px);
+}
+
+.open .bar2 {
+  opacity: 0;
+}
+
+.open .bar3 {
+  -webkit-transform: rotate(45deg) translate(-6px, -8px);
+  transform: rotate(45deg) translate(-6px, -8px);
+}
+
+.open .mobile-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: auto;
+}
+
+.mobile-menu {
+  list-style: none;
+  color: white;
+  background-color: #0f1f5a;
+  text-decoration: none;
+  display: none;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  height: auto;
+  width: 100%;
+  z-index: 1000;
+}
+
+.mobile-menu li {
+  margin-bottom: 20px;
+}
+
+.mobile-menu li a{
+  color: white;
+  border-radius: 50px;
+  transition: 0.2s;
+  padding: 10px 25px;
+}
+
+.mobile-menu li button{
+  background-color: darkblue;
+  display: flex;
+  color: white;
+  border-radius: 50px;
+  transition: 0.2s;
+  padding: 10px 25px;
+}
+
+.mobile-menu li a:hover{
+  color: #1f35eb;
+  background-color: white;
+}
+
+.mobile-menu li button:hover{
+  color: #1f35eb;
+  background-color: white;
+}
+
+@media only screen and (max-width: 1400px) {
+  header nav {
+    display: none;
+  }
+
+  #hamburger-icon {
+    display: block;
+  }
+}
+
+
+body {
+  background-color: #0f1f5a;
+}
+
+.container1{
+  height: 100%;
+  background-image: url('/images/ptimage.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.option-bar {
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.option-bar h1 {
+  color: white;
+  font-size: 2rem;
+}
+
+.option-buttons button {
+  cursor: pointer;
+  padding: 10px 20px;
+  font-size: 16px;
+  color:black; /* Dodanie koloru tekstu */
+  border: 1px solid black;
+  background-color: rgb(255,255,255,0.7);
+  border-radius: 50px;
+}
+
+.option-buttons button:hover{
+  background-color: #5b01d1;
+  color: white;
+}
+
+.info-boxes {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  flex-wrap: wrap; /* Pozwala na przechodzenie na kolejny wiersz */
+}
+
+.box1 p,
+.box2 p,
+.box3 p,
+.box4 p,
+.box5 p {
+  color: white;
+  padding:7px;
+  font-size: 1rem;
+}
+
+.box1, .box2, .box3, .box4, .box5 {
+  font-size: 0.65rem;
+  width: 19%;
+  padding: 20px;
+  border: 1px solid white;
+  border-radius: 5px;
+  word-wrap: break-word;
+  margin-bottom: 20px; /* Dodaje odstęp między boxami przy zmniejszaniu ekranu */
+  box-sizing: border-box;
+  box-shadow: 0 0 5px #666565;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.box1:hover,
+.box2:hover,
+.box3:hover,
+.box4:hover,
+.box5:hover {
+  transform: scale(1.06); /* Powiększenie o 5% */
+  transition: transform 0.3s ease; /* Dodanie płynnego przejścia */
+}
+
+.value {
+  font-size: 1.5rem;
+  padding: 7px;
+  font-weight: bold;
+  display: flex; /* Ustawienie kontenera flex */
+  justify-content: space-between; /* Rozłożenie zawartości na końce kontenera */
+  align-items: center; /* Wyrównanie wzdłuż osi pionowej */
+  color: white;
+}
+
+.box1 .value i{
+  color: #27c3ff;
+}
+
+.box2 .value i{
+  color:#5b01d1;
+}
+
+.box3 .value i, .box4 .value i{
+  color:#f17aff;
+}
+
+.box5 .value i{
+  color:#f17aff;
+}
+
+/* Media query dla mniejszych ekranów */
+@media screen and (max-width: 768px) {
+  .box1, .box2, .box3, .box4, .box5 {
+    width: 48%; /* Ustawia dwa boxy w jednym rzędzie */
+  }
+}
+
+/* Media query dla jeszcze mniejszych ekranów */
+@media screen and (max-width: 480px) {
+  .box1, .box2, .box3, .box4, .box5 {
+    width: 100%; /* Ustawia każdy box na pełną szerokość */
+  }
+}
+
+.meter-container {
+  width: 100%;
+}
+
+.meter {
+  padding: auto;
+  margin: 0 50px 40px 50px;
+  height: 35px;
+  width: auto;
+  background: linear-gradient(to right, #f17aff, red, orange, yellow, #27c3ff);
+  border-radius: 15px;
+  position: relative;
+  border: 1px solid white;
+}
+
+.meter-value {
+  position: absolute;
+  height: 100%;
+  width: 0;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 15px 0 0 15px;
+  transition: width 0.3s ease-in-out;
+}
+
+.label {
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: black;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.chartsbox{
+  display: flex;
+  margin-left: 20px;
+  margin-right: 20px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  border-radius: 5px;
+  border: 1px solid white;
+  box-shadow: 0 0 7px #666565;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.chart-container {
+  margin: 5%;
+  width: 90%; 
+  height: 40vh;
+}
+
+footer {
+  background-color: #0f1f5a;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+  margin-top: auto; /* Ustawienie stopki na samym dole */
+  height: 80px;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}

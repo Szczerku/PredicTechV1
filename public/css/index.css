@@ -1,0 +1,80 @@
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes drop {
+    0% {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ustawienie minimalnej wysokości na całą wysokość okna przeglądarki */
+}
+
+main {
+    flex: 1; /* Rozciąganie głównego obszaru, aby zajmował dostępne miejsce */
+}
+
+.first_container {
+    background-image: url('/images/ptimage.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100%;
+    opacity: 0.85;
+}
+
+.text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+}
+
+.text-overlay h1 {
+    display: inline-block;
+    font-size: 4rem; /* Dostosuj rozmiar czcionki według potrzeb */
+}
+
+.text-overlay h1 span {
+    display: inline-block;
+    animation: bounce 2s ease infinite alternate;
+    animation-delay: calc(0.2s * var(--index));
+}
+
+.text-overlay p {
+    font-size: 1.5rem; /* Dostosuj rozmiar czcionki według potrzeb */
+    opacity: 0;
+    animation: drop 1s ease forwards;
+    animation-delay: 2s;
+}
+
+
+footer {
+    background-color: #0f1f5a;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: auto; /* Ustawienie stopki na samym dole */
+    height: 80px;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}

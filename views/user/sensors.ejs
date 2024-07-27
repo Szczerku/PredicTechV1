@@ -1,0 +1,58 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/sensors.css">
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+
+    <main>
+        <% if (sens.length > 0) { %>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Number</th>
+                        <th>Topic</th>
+                        <th>Address IP</th>
+                        <th>Port</th>
+                        <th>Status</th>
+                        <th>Connect</th>
+                        <th>Edition</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% sens.forEach(function(sensor, index) { %>
+                    <tr>
+                        <td><%= index + 1 %></td>
+                        <td><%= sensor.name %></td>
+                        <td><%= sensor.addresIp %></td>
+                        <td><%= sensor.port %></td>
+                        <td></td>
+                        <!--do zrobienia polaczenie z sensorem aby odbierac dane -->
+                        <input type="hidden" value="<%= sensor._id %>" name="sensorId">
+                        <td>
+                            <a href="/user/connect/<%= sensor._id %>" class="btn">Connect</a>
+                        </td>
+                        <td><a href="/user/edit-sensor/<%= sensor._id %>?edit=true" class="btn">Edit</a>
+                            <input type="hidden" value="<%= sensor._id %>" name="sensorId">
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>"></td>
+                        <td>
+                            <form action="/user/delete-sensor" method="POST">
+                                <input type="hidden" value="<%= sensor._id %>" name="sensorId">
+                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                <button class="btn" type="submit">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+        <% } else { %>
+        <h1>No Sensors Found!</h1>
+        <% } %>
+    </main>
+    <%- include('../includes/end.ejs') %>
+</body>
+</html>

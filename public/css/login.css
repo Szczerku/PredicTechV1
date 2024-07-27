@@ -1,0 +1,76 @@
+main {
+    position: flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .login-form {
+    position: absolute;
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    top: 20%;
+  }
+  
+  .user-message {
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    position: absolute;
+    top: 10%; /* Umieszcza komunikat na górze */
+  }
+  
+  .user-message--error {
+    background-color: #ffcccc;
+    color: #cc0000;
+  }
+  
+  .form-control {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  input[type="email"],
+  input[type="password"] {
+    width: calc(100% - 10px);
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  button.btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  button.btn:hover {
+    background-color: #0056b3;
+  }
+  
+  a.reset-password-link {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  a.reset-password-link:hover {
+    text-decoration: underline;
+  }

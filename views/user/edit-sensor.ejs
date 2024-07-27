@@ -1,0 +1,29 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/edit-sensor.css">
+</head>
+
+<body>
+   <%- include('../includes/navigation.ejs') %>
+
+    <main>
+        <form class="sensor-form" action="/user/<% if (editing) { %>edit-sensor<% } else { %>add-sensor<% } %>" method="POST">
+            <div class="form-control">
+                <label for="name">Topic</label>
+                <input type="text" name="name" id="name" value="<% if (editing) { %><%= sensor.name %><% } %>">
+            </div>
+            <div class="form-control">
+                <label for="addresIp">Address Ip</label>
+                <input type="text" name="addresIp" id="addresIp" value="<% if (editing) { %><%= sensor.addresIp %><% } %>">
+            </div>
+            <div class="form-control">
+                <label for="port">Port</label>
+                <input type="number" name="port" id="port" value="<% if (editing) { %><%= sensor.port %><% } %>">
+            </div>
+            <% if (editing) { %>
+                <input type="hidden" value="<%= sensor._id %>" name="sensorId">
+            <% } %>
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <button class="btn" type="submit"><% if (editing) { %>Update Sensor<% } else { %>Add Sensor<% } %></button>
+        </form>
+    </main>
+<%- include('../includes/end.ejs') %>

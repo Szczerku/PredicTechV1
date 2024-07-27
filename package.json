@@ -1,0 +1,35 @@
+{
+  "name": "predictech",
+  "version": "1.0.0",
+  "description": "Start-up project based on IoT",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js",
+    "start-server": "node app.js"
+  },
+  "author": "Michal Szczerkowski",
+  "license": "ISC",
+  "devDependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-flash": "^0.1.1",
+    "connect-mongodb-session": "^5.0.0",
+    "cookie": "^0.6.0",
+    "cookie-parser": "^1.4.6",
+    "csurf": "^1.11.0",
+    "ejs": "^3.1.9",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "express-validator": "^7.0.1",
+    "express-ws": "^5.0.2",
+    "mongodb": "^6.5.0",
+    "mongoose": "^8.2.4",
+    "mqtt": "^5.5.0",
+    "mqtt-connection": "^4.1.0",
+    "nodemon": "^3.1.0",
+    "ws": "^8.16.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  }
+}

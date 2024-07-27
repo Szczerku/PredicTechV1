@@ -1,0 +1,69 @@
+<%- include('../includes/head.ejs') %>
+    
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+    <main>
+        <div class="container1">
+            <div class="option-bar">
+                <h1>Analytics</h1>
+                <div class="option-buttons">
+                    <button onclick="selectoptions('productivity')">Productivity</button>
+                    <button onclick="selectoptions('energy')">Energy/Emissions</button>
+                    <button onclick="selectoptions('predictive')">Predictive Maintenace</button>
+                  </div>
+                  <script>
+                    function selectoptions(option) {
+                      console.log('Selected:', option);
+                      // Here you can call a function or perform other actions depending on your choice
+                    }
+                  </script>
+            </div>
+            <!-- <div class="status-box">
+                <p>MQTT Status:</p>
+                <div class="value" id="mqttStatus">Disconnected</div>
+            </div> -->
+            <div class="info-boxes">
+                <div class="box1">
+                    <p>Jobs Completed/Hour</p>
+                    <div class="value">03<i class="fa-solid fa-square-check"></i></div>
+                </div>
+                <div class="box2">
+                    <p>Cycle Time</p>
+                    <div class="value">1 hr 22 min<i class="fa-solid fa-clock"></i></div>
+                </div>
+                <div class="box3">
+                    <p>Overall Equipment Efficiency</p>
+                    <div class="value">80%<i class="fa-solid fa-gauge-simple-high"></i></div>
+                </div>
+                <div class="box4">
+                    <p>Operating Efficiency</p>
+                    <div class="value">75%<i class="fa-solid fa-gauge-simple-high"></i></div>
+                </div>
+                <div class="box5">
+                    <p>Energy Consumption</p>
+                    <div class="value">12.5 kWh<i class="fa-solid fa-bolt"></i></div>
+                </div>
+            </div>
+
+            <div class="meter-container">
+                <div class="meter">
+                    <div class="meter-value" id="meter-value"></div>
+                    <div class="label" id="meter-label">0%</div>
+                </div>
+            </div>
+
+            <div class="chartsbox">
+                <div class="chart-container">
+                    <canvas id="lineChart1"></canvas>
+                </div>
+            <script src='js/chart.js'></script>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 PredicTech. All rights reserved.</p>
+        </div>
+    </footer>
+<%- include('../includes/end.ejs') %>

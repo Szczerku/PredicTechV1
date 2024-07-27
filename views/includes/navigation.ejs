@@ -1,0 +1,125 @@
+<header>
+    <div class="logo">
+        <a href='/'>
+            <img src="https://www.predictech.co.uk/storage/app/uploads/public/64a/6b3/ae6/64a6b3ae68ce5827305860.svg" alt="PredicTech">
+        </a>
+    </div>
+    <nav>
+        <ul class="nav-links">
+            <!--HOME-->
+            <!-- <li class="main-header__item">
+                <a class="<%= path === '/' ? 'active' : '' %>" href="/"><i class="fa-solid fa-house-chimney-user">
+                    </i> Home
+                </a>
+            </li> -->
+            <!--SENSORS - add, list of sensors-->
+            <% if (isAuthenticated) { %>
+                <li class = "main-header__item">
+                    <a class="<%= path === '/ws' ? 'active' : '' %>" href="/ws">
+                        <i class="fa-solid fa-chart-line"></i>
+                        <span class="text-with-icon">Dashboard</span>
+                    </a>
+                </li>
+                <li class="main-header__item">
+                    <a class="<%= path === '/user/add-sensor' ? 'active' : '' %>" href="/user/add-sensor">
+                        <i class="fa-solid fa-satellite-dish"></i> 
+                        <span class="text-with-icon">Add Sensor</span>
+                    </a>
+                </li>
+                <li class="main-header__item">
+                    <a class="<%= path === '/user/sensors' ? 'active' : '' %>" href="/user/sensors">
+                        <i class="fa-solid fa-wave-square"></i>
+                        <span class="text-with-icon">Sensors</span>
+                    </a>
+                </li>
+                <!--SETTINGS-->
+                <li class="main-header__item">
+                    <a href="#">
+                        <i class="fa-solid fa-gear"></i>
+                        <span class="text-with-icon">Settings</span>
+                    </a>
+                </li>
+                <!--SUPPORT-->
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <span class="text-with-icon">Support</span>
+                    </a>
+                </li>
+            <% } %>
+
+            <!--LOGIN/SIGNUP/LOGOUT-->
+            <li class="main-header__item-list">
+                <% if (!isAuthenticated) { %>
+                    <li class="main-header__item">
+                        <a class="<%= path === '/login' ? 'active' : '' %>" href="/login">Login</a>
+                    </li>
+                    <li>
+                        <a class="<%= path === '/signup' ? 'active' : '' %>" href="/signup">Sign up</a>
+                    </li>
+                <% } else { %>
+                <form action="/logout" method="POST">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <button class="btn" type="submit">Logout</button>
+                </form>
+                <% } %>
+            </li>
+                
+        </ul>
+      </nav>
+      <div id="hamburger-icon" onclick="toggleMobileMenu(this)">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+        <ul class="mobile-menu">
+                <!--SENSORS - add, list of sensors-->
+                <% if (isAuthenticated) { %>
+                    <li class = "main-header__item">
+                        <a class="<%= path === '/ws' ? 'active' : '' %>" href="/ws">
+                            <i class="fa-solid fa-chart-line"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="main-header__item">
+                        <a class="<%= path === '/user/add-sensor' ? 'active' : '' %>" href="/user/add-sensor">
+                            <i class="fa-solid fa-satellite-dish"></i> Add Sensor
+                        </a>
+                    </li>
+                    <li class="main-header__item">
+                        <a class="<%= path === '/user/sensors' ? 'active' : '' %>" href="/user/sensors">
+                            <i class="fa-solid fa-wave-square"></i> User Sensors
+                        </a>
+                    </li>
+                    <!--SETTINGS-->
+                    <li class="main-header__item">
+                        <a href="#">
+                            <i class="fa-solid fa-gear"></i> Settings
+                        </a>
+                    </li>
+                    <!--SUPPORT-->
+                    <li>
+                        <a href="#">
+                            <i class="fa-solid fa-circle-info"></i> Support
+                        </a>
+                    </li>
+                <% } %>
+    
+                <!--LOGIN/SIGNUP/LOGOUT-->
+                <li class="main-header__item-list">
+                    <% if (!isAuthenticated) { %>
+                        <li class="main-header__item">
+                            <a class="<%= path === '/login' ? 'active' : '' %>" href="/login">Login</a>
+                        </li>
+                        <li>
+                            <a class="<%= path === '/signup' ? 'active' : '' %>" href="/signup">Sign up</a>
+                        </li>
+                    <% } else { %>
+                    <form action="/logout" method="POST">
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        <button class="btn" type="submit">Logout</button>
+                    </form>
+                    <% } %>
+                </li>
+        </ul>
+        <script src="/js/navbar.js"></script>
+    </div>        
+</header>
