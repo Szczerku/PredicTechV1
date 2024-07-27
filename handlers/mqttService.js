@@ -76,4 +76,4 @@ class MqttService {
     }
 }
 
-module.exports = new MqttService();
+module.exports = MqttService;
