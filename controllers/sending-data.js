@@ -1,6 +1,6 @@
 const Sensor = require('../models/sensor');
 const websocket = require('../handlers/WebSocket');
-const mqttService = require('../handlers/mqttService');
+const mqttClientManager = require('../handlers/mqttClientManager');
 
 exports.getConnect = async (req, res, next) => {
     try {
@@ -17,12 +17,28 @@ exports.getConnect = async (req, res, next) => {
         const options = req.session.clientOptions;
         const topic = req.session.subTopic;
 
-        mqttService.connect(options, topic, (message) => {
-            websocket.sendData(userId, message);
-            // websocket.sendMqttStatus(userId);
+        mqttClientManager.removeClient(userId);
+
+        const client = mqttClientManager.getClient(userId, options);
+
+        // Subskrybowanie na temat i obsługa wiadomości
+        client.on('connect', () => {
+            console.log('Połączono z brokerem MQTT');
+            client.subscribe(topic, (err) => {
+                if (err) {
+                    console.error(`Błąd podczas subskrybowania tematu: ${err}`);
+                }
+            });
         });
 
-        
+        client.on('message', (topic, message) => {
+            websocket.sendData(userId, JSON.parse(message.toString()));
+        });
+        // const mqttService = new MqttService();
+        // mqttService.connect(options, topic, (message) => {
+        //     websocket.sendData(userId, message);
+        // });
+
         
         res.redirect('/ws');
 
