@@ -18,8 +18,9 @@ exports.getConnect = async (req, res, next) => {
         const topic = req.session.subTopic;
 
         mqttClientManager.removeClient(userId);
-
+        console.log('Usunięto klienta MQTT');
         const client = mqttClientManager.getClient(userId, options);
+        console.log('Pobrano klienta MQTT');
 
         // Subskrybowanie na temat i obsługa wiadomości
         client.on('connect', () => {
