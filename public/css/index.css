@@ -29,7 +29,7 @@ main {
 }
 
 .first_container {
-    background-image: url('/images/ptimage.jpg');
+    background-image: url('/images/ptimage.webp');
     background-size: cover;
     background-position: center;
     height: 100vh;
