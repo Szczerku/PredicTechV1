@@ -56,8 +56,12 @@ exports.getConnect = async (req, res, next) => {
 
         client.on('disconnect', async () => {
             console.log('Rozłączono z brokerem MQTT');
-            sensor.connected = false;
-            await sensor.save();
+            const currentSensor = await Sensor.findById(sensorID);
+            if (currentSensor.connected) {
+                console.log('Zamknięto połączenie z brokerem MQTT');
+                currentSensor.connected = false;
+                await currentSensor.save();
+            }
         });
 
         res.redirect('/ws');
