@@ -23,10 +23,13 @@ exports.getConnect = async (req, res, next) => {
         console.log('Pobrano klienta MQTT');
 
         // Subskrybowanie na temat i obsługa wiadomości
-        client.on('connect', () => {
-            console.log('Połączono z brokerem MQTT');
-            sensor.connected = true;
-            sensor.save();
+        client.on('connect', async () => {
+            const currentSensor = await Sensor.findById(sensorID);
+            if (!currentSensor.connected) {
+                console.log('Połączono z brokerem MQTT');
+                currentSensor.connected = true;
+                await currentSensor.save();
+            }
             client.subscribe(topic, (err) => {
                 if (err) {
                     console.error(`Błąd podczas subskrybowania tematu: ${err}`);
@@ -42,16 +45,19 @@ exports.getConnect = async (req, res, next) => {
             console.error(`Błąd klienta MQTT: ${err}`);
         });
 
-        client.on('close', () => {
-            console.log('Zamknięto połączenie z brokerem MQTT');
-            sensor.connected = false;
-            sensor.save();
+        client.on('close', async () => {
+            const currentSensor = await Sensor.findById(sensorID);
+            if (currentSensor.connected) {
+                console.log('Zamknięto połączenie z brokerem MQTT');
+                currentSensor.connected = false;
+                await currentSensor.save();
+            }
         });
 
-        client.on('disconnect', () => {
+        client.on('disconnect', async () => {
             console.log('Rozłączono z brokerem MQTT');
             sensor.connected = false;
-            sensor.save();
+            await sensor.save();
         });
 
         res.redirect('/ws');
