@@ -50,9 +50,9 @@ function handleWebSocket(server, sessionParser) {
 function sendData(userId, message) {
     if (wsmap.has(userId)) {
         wsmap.get(userId).send(JSON.stringify(message)); // Send message if user is connected
-    } else {
-        console.log('User not connected');
-    }
+    } //else {
+        //console.log('User not connected');
+    //}
 }
 
 function sendMqttStatus(userId) {

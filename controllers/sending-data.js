@@ -25,6 +25,8 @@ exports.getConnect = async (req, res, next) => {
         // Subskrybowanie na temat i obsługa wiadomości
         client.on('connect', () => {
             console.log('Połączono z brokerem MQTT');
+            sensor.connected = true;
+            sensor.save();
             client.subscribe(topic, (err) => {
                 if (err) {
                     console.error(`Błąd podczas subskrybowania tematu: ${err}`);
@@ -35,12 +37,23 @@ exports.getConnect = async (req, res, next) => {
         client.on('message', (topic, message) => {
             websocket.sendData(userId, JSON.parse(message.toString()));
         });
-        // const mqttService = new MqttService();
-        // mqttService.connect(options, topic, (message) => {
-        //     websocket.sendData(userId, message);
-        // });
 
-        
+        client.on('error', (err) => {
+            console.error(`Błąd klienta MQTT: ${err}`);
+        });
+
+        client.on('close', () => {
+            console.log('Zamknięto połączenie z brokerem MQTT');
+            sensor.connected = false;
+            sensor.save();
+        });
+
+        client.on('disconnect', () => {
+            console.log('Rozłączono z brokerem MQTT');
+            sensor.connected = false;
+            sensor.save();
+        });
+
         res.redirect('/ws');
 
     } catch (err) {

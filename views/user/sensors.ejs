@@ -15,7 +15,7 @@
                         <th>Topic</th>
                         <th>Address IP</th>
                         <th>Port</th>
-                        <th>Status</th>
+                        <th>Connected</th>
                         <th>Connect</th>
                         <th>Edition</th>
                         <th>Delete</th>
@@ -28,7 +28,7 @@
                         <td><%= sensor.name %></td>
                         <td><%= sensor.addresIp %></td>
                         <td><%= sensor.port %></td>
-                        <td></td>
+                        <td><%= sensor.connected %></td>
                         <!--do zrobienia polaczenie z sensorem aby odbierac dane -->
                         <input type="hidden" value="<%= sensor._id %>" name="sensorId">
                         <td>

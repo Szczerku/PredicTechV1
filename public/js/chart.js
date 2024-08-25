@@ -100,6 +100,8 @@ $(document).ready(async function () {
     const lineChart1 = configureChart(ctx1);
 
     const ws = new WebSocket('wss://mszczerkovski.onrender.com/ws'); 
+    //const ws = new WebSocket('http://localhost:3000/ws');
+    
     
     ws.onopen = () => {
         console.log('Connected TO WS SERVER');
